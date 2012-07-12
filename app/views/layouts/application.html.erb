@@ -19,8 +19,8 @@
     <script type="text/javascript">
       function initialize() {
         var myOptions = {
-          center: new google.maps.LatLng(-34.397, 150.644),
-          zoom: 8,
+          center: new google.maps.LatLng(49.457637, -2.580414),
+          zoom: 12,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById("map_canvas"),
@@ -30,11 +30,26 @@
 </head>
 <body onload="initialize()">
 
-<%= yield %>
+<div id="top">
+	<ul>
+		<li id="popular_views">Popular Views:</li>
+		<li><a href="/restaurants">Restaurants</a></li>
+		<li><a href="/recycling-points">Recycling Points</a></li>
+		<li><a href="/bus-routes">Bus Routes</a></li>
+		<li><a href="/post-boxes">Post Boxes</a></li>
+		<li><a href="/garages">Garages</a></li>
+		<li><a href="/phone-boxes">Phone Boxes</a></li>
+		<li><a href="/more">More &raquo;</a></li>
+	</ul>
+</div>
 
-<div id="map_canvas" style="width:100%; height:100%"></div>
+<div id="map_canvas"></div>
 
-
+<div id="content">
+	<div id="padded_content">
+		<%= yield %>
+	</div>
+</div>
 
 </body>
 </html>
