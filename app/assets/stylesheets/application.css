@@ -13,13 +13,13 @@
 */
 
 body {
-	font-family:"Segoe UI";
+	font-family:"Segoe UI", "Arial";
 	margin:0;
 }
 
 /* Canvas */
 #map_canvas {
-	margin-left:200px;
+	margin-left:250px;
 	margin-top:30px;
 }
 
@@ -69,7 +69,7 @@ body {
 	top:30px;
 	bottom:0;
 	background-color:#666;
-	width:200px;
+	width:250px;
 }
 
 #padded_content {
@@ -80,8 +80,12 @@ body {
 #content li {
 	list-style-type:none;
 	margin:0;
+	margin-bottom:10px;
 	padding:0;
+	background-color:#333;
+	padding:15px;
 }
+
 
 #content ul {
 	margin:0;
@@ -90,14 +94,24 @@ body {
 
 #content h3 {
 	margin-top:0;
+	margin-bottom:0px;
 }
 #content h3 a {
 	color:#FFF;
 	text-decoration:none;
-	font-size:0.9em;
+	font-size:0.85em;
+	margin-bottom:5px;
 }
 
 #content li p {
-	font-size:0.85em;
+	font-size:0.75em;
 	color:#EFEFEF;
+}
+
+#content li a.goto {
+	color:#FFF;
+	text-decoration:none;
+	text-align:right;
+	font-size:0.75em;
+	float:right;
 }
