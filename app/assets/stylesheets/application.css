@@ -82,7 +82,7 @@ body {
 	margin:0;
 	margin-bottom:10px;
 	padding:0;
-	background-color:#333;
+	background-color:#118BD6;
 	padding:15px;
 }
 
@@ -108,7 +108,7 @@ body {
 	color:#EFEFEF;
 }
 
-#content li a.goto {
+.goto, .info {
 	color:#FFF;
 	text-decoration:none;
 	text-align:right;
