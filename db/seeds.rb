@@ -5,3 +5,43 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+#####
+# without_protection disables mass-assignment protection
+#####
+
+Tag.destroy_all
+Service.destroy_all
+Location.destroy_all
+
+Location.create(
+	:lat => 1,
+	:lng => 1
+	)
+
+	Service.create(
+		[
+		:name => "Supermarket with a cashpoint",
+		:location => Location.last
+		], 
+		:without_protection => true
+		)
+
+Tag.create(
+	[
+	:name => "Cashpoint",
+	:services => [ Service.last ]
+	],
+	:without_protection => true
+	)
+
+Tag.create(
+	[
+	:name => "Supermarket",
+	:services => [ Service.last ]
+	],
+	:without_protection => true
+	)
+
+
