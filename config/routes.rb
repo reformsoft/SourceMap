@@ -1,4 +1,13 @@
 MapTap::Application.routes.draw do
+  resources :tags
+
+
+  resources :services
+
+
+  resources :locations
+
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
