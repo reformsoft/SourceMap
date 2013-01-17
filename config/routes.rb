@@ -67,4 +67,6 @@ MapTap::Application.routes.draw do
   
   root :to => 'map#index'
   match '/:action', :controller => 'map'
+  
+  match '/locations/get_points/:type', :controller => 'locations', :action => 'get_points'
 end

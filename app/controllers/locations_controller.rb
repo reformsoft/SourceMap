@@ -9,6 +9,16 @@ class LocationsController < ApplicationController
       format.json { render json: @locations }
     end
   end
+  
+  def get_points
+    @locations = Location.all
+    
+    respond_to do |format|
+      format.json { render json: @locations }
+    end
+    
+    
+  end
 
   # GET /locations/1
   # GET /locations/1.json

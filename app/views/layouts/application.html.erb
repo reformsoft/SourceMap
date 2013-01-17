@@ -38,6 +38,32 @@
 
         	var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
     		
+
+			$(".category").click(function() {
+				var type = $(this).data("type")
+				
+	        	$.ajax({
+					url: '<%= url_for :action => "get_points", :controller => "locations", :type => "test" %>',
+	        		dataType: 'script' ,
+					success: function(e) {
+						// get the data out
+						alert("what");
+					},
+					error: function(e) {
+						alert(e);
+					}
+				});
+				
+				return false;
+			});
+			var myLatlng = new google.maps.LatLng(49.457637, -2.580414);
+			
+			var marker = new google.maps.Marker({
+			      position: myLatlng,
+			      map: map,
+			      title:"Hello World!"
+			  });
+
     		$(".goto").click(function() {
     			var id = parseInt($(this).attr("id"));
     			var r = data[id];
@@ -75,12 +101,12 @@
 <div id="top">
 	<ul>
 		<li id="popular_views">Popular Views:</li>
-		<li><a href="/restaurants">Restaurants</a></li>
-		<li><a href="/recycling-points">Recycling Points</a></li>
-		<li><a href="/bus-routes">Bus Routes</a></li>
-		<li><a href="/post-boxes">Post Boxes</a></li>
-		<li><a href="/garages">Garages</a></li>
-		<li><a href="/phone-boxes">Phone Boxes</a></li>
+		<li><a class="category" href="/restaurants">Restaurants</a></li>
+		<li><a class="category" href="/recycling-points">Recycling Points</a></li>
+		<li><a class="category" href="/bus-routes">Bus Routes</a></li>
+		<li><a class="category" href="/post-boxes">Post Boxes</a></li>
+		<li><a class="category" href="/garages">Garages</a></li>
+		<li><a class="category" href="/phone-boxes">Phone Boxes</a></li>
 		<li><a href="/more">More &raquo;</a></li>
 	</ul>
 </div>
