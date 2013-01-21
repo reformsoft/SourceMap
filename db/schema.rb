@@ -11,7 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130117190721) do
+ActiveRecord::Schema.define(:version => 20130121202211) do
+
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.string   "template"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "locations", :force => true do |t|
     t.float    "lat"
@@ -26,6 +33,8 @@ ActiveRecord::Schema.define(:version => 20130117190721) do
     t.integer  "location_id"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.float    "lat"
+    t.float    "lng"
   end
 
   add_index "services", ["location_id"], :name => "index_services_on_location_id"
@@ -39,6 +48,7 @@ ActiveRecord::Schema.define(:version => 20130117190721) do
     t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.string   "value"
   end
 
 end
