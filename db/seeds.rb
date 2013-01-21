@@ -18,8 +18,7 @@ Location.destroy_all
 #####
 # China Red
 #####
-Location.create(:lat => 49.46392, :lng => -2.53518)
-Service.create( { :name => "China Red", :location => Location.last }, :without_protection => true)
+Service.create( { :name => "China Red", :lat => 49.46392, :lng => -2.53518 }, :without_protection => true)
 Tag.create( { :name => "Restaurant", :services => [ Service.last ] }, :without_protection => true)
 Tag.create( { :name => "Chinese", :services => [ Service.last ] }, :without_protection => true)
 Tag.create( { :name => "Takeaway", :services => [ Service.last ] }, :without_protection => true)
@@ -27,15 +26,13 @@ Tag.create( { :name => "Takeaway", :services => [ Service.last ] }, :without_pro
 #####
 # Guernsey Airport
 #####
-Location.create(:lat => 49.43197, :lng => -2.59643)
-Service.create({ :name => "Guernsey Airport", :location => Location.last }, :without_protection => true)
+Service.create({ :name => "Guernsey Airport", :lat => 49.43197, :lng => -2.59643 }, :without_protection => true)
 Tag.create({:name => "Airport", :services => [ Service.last ] }, :without_protection => true)
 
 
 #####
 # Captin's
 #####
-Location.create(:lat => 49.43177, :lng => -2.55713)
-Service.create( { :name => "Captain's", :location => Location.last }, :without_protection => true)
+Service.create( { :name => "Captain's", :lat => 49.43177, :lng => -2.55713 }, :without_protection => true)
 Tag.find_by_name("Restaurant").services << Service.last
 Tag.create({:name => "Pub", :services => [ Service.last ] }, :without_protection => true)
