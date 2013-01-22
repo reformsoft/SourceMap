@@ -1,132 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>MapTap</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-  
-  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
-    <style type="text/css">
-      html { height: 100% }
-      body { height: 100%; margin: 0; padding: 0 }
-      #map_canvas { height: 100% }
-    </style>
-    <script type="text/javascript"
-      src="http://maps.googleapis.com/maps/api/js?key=AIzaSyADY5kcjJrAU5MM_rImge2LTWK4Nbfc5OA&sensor=false">
-    </script>
-    
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+	<title>MapTap</title>
+	<%= stylesheet_link_tag    "application", :media => "all" %>
 
-    <%= javascript_include_tag "jquery.blockUI" %>
-    
-    <script type="text/javascript">
-    	var data = {
-				3242: {
-					X: 49.457637,
-					Y: -2.58
-				}
-			};
-			
-		$(function() {
-			
-			var myOptions = {
-				center: new google.maps.LatLng(49.457637, -2.580414),
-				zoom: 12,
-				mapTypeId: google.maps.MapTypeId.ROADMAP
-			};
+	<script type="text/javascript"
+	src="http://maps.googleapis.com/maps/api/js?key=AIzaSyADY5kcjJrAU5MM_rImge2LTWK4Nbfc5OA&sensor=false">
+	</script>
+	
+	<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
-        	var map = new google.maps.Map(document.getElementById("map_canvas"), myOptions);
-			
-			$(".category").click(function() {
-				var type = $(this).data("type")
-				
-	        	$.ajax({
-					url: '<%= url_for :action => "get_services_by_category", :controller => "services", :category_id => "1" %>',
-	        		dataType: 'json',
-					beforeSend: function(e) {
-						$("#loading").show();
-					},
-					success: function(e) {
-						$.each(e, function(key, value) {
-							var myLatlng = new google.maps.LatLng(value.lat, value.lng);
+	<%= javascript_include_tag "jquery.blockUI" %>
+	
+	<%= javascript_include_tag "application" %>
+	<%= csrf_meta_tags %>
+	
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<style type="text/css">
+	html { height: 100% }
+	body { height: 100%; margin: 0; padding: 0 }
+	#map_canvas { height: 100% }
+	</style>
 
-							var marker = new google.maps.Marker({
-							      position: myLatlng,
-							      map: map,
-							      title:"Hello World!"
-							  });
-						});
-					},
-					complete: function(e) {
-						$("#loading").hide();
-					},
-					error: function(e) {
-						alert(e);
-					}
-				});
-				
-				return false;
-			});
-			
+	
 
-    		$(".goto").click(function() {
-    			var id = parseInt($(this).attr("id"));
-    			var r = data[id];
-    			
-    			// with the data we've got the X/Y, so using the map
-    			// zoom and go to that point
-    			map.panTo(new google.maps.LatLng(r.X, r.Y));
-    			map.setZoom(18);
-    		});
-    		
-    		$(".info").click(function() {
-    			// show a dialog with all info
-    			$.ajax({
-    				url: "/map/types",
-    				beforeSend: function(xhr) {
-    					$.blockUI({
-    						//opoh rara
-    					});
-    				},
-    				success: function(data) {
-    					$.unblockUI();
-    				},
-    				error: function() {
-    					$.unblockUI();
-    				}
-    			});
-    		});
-    	});
-    
-		
-    </script>
 </head>
 <body>
 
-<div id="top">
-	<ul>
-		<li id="popular_views">Popular Views:</li>
-		
-		<%
+	<div id="top">
+		<ul>
+			<li id="popular_views">Popular Views:</li>
+			
+			<%
 			@categories.each do |category|
 				%> <li> 
 				<%= link_to category.name, { :controller => "services", :action => "get_services_by_category", :category_id => category.id }, :class => "category" %> 
 				</li> <% 
 			end
-		%>
-		
-		<li><a href="/more">More &raquo;</a></li>
-	</ul>
-</div>
-
-<div id="map_canvas"></div>
-
-<div id="content">
-	<div id="padded_content">
-		<%= yield %>
+			%>
+			
+			<li><a href="/more">More &raquo;</a></li>
+		</ul>
 	</div>
-</div>
+
+	<div id="map_canvas"></div>
+
+	<div id="content">
+		<div id="padded_content">
+			<%= yield %>
+		</div>
+	</div>
 
 </body>
 </html>
