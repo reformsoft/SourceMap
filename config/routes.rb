@@ -1,12 +1,4 @@
 MapTap::Application.routes.draw do
-  resources :tags
-
-
-  resources :services
-
-
-  resources :locations
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -64,6 +56,11 @@ MapTap::Application.routes.draw do
   # This is a legacy wild controller route that's not recommended for RESTful applications.
   # Note: This route will make all actions in every controller accessible via GET requests.
   # match ':controller(/:action(/:id))(.:format)'
+
+  resources :tags
+  resources :services
+  resources :locations
+  resources :categories
   
   root :to => 'map#index'
   match '/:action', :controller => 'map'
