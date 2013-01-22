@@ -42,7 +42,7 @@
 				var type = $(this).data("type")
 				
 	        	$.ajax({
-					url: '<%= url_for :action => "get_points", :controller => "locations", :type => "test" %>',
+					url: '<%= url_for :action => "get_services_by_category", :controller => "services", :category_id => "1" %>',
 	        		dataType: 'json',
 					beforeSend: function(e) {
 						$("#loading").show();
@@ -107,12 +107,15 @@
 <div id="top">
 	<ul>
 		<li id="popular_views">Popular Views:</li>
-		<li><a class="category" href="/restaurants">Restaurants</a></li>
-		<li><a class="category" href="/recycling-points">Recycling Points</a></li>
-		<li><a class="category" href="/bus-routes">Bus Routes</a></li>
-		<li><a class="category" href="/post-boxes">Post Boxes</a></li>
-		<li><a class="category" href="/garages">Garages</a></li>
-		<li><a class="category" href="/phone-boxes">Phone Boxes</a></li>
+		
+		<%
+			@categories.each do |category|
+				%> <li> 
+				<%= link_to category.name, { :controller => "services", :action => "get_services_by_category", :category_id => category.id }, :class => "category" %> 
+				</li> <% 
+			end
+		%>
+		
 		<li><a href="/more">More &raquo;</a></li>
 	</ul>
 </div>

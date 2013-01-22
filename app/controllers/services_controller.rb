@@ -9,6 +9,14 @@ class ServicesController < ApplicationController
       format.json { render json: @services }
     end
   end
+  
+  def get_services_by_category
+    @services = Service.find_by_category_id(params[:category_id])
+    
+    respond_to do |format|
+      format.json { render json: @services }
+    end
+  end
 
   # GET /services/1
   # GET /services/1.json
