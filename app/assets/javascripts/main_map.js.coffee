@@ -10,9 +10,12 @@ $ ->
 
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions)
   $(".category").click ->
+    url = $(this).attr('href')
     type = $(this).data("type")
+
+    window.history.pushState path: url, '', url 
     $.ajax
-      url: $(this).attr('href')
+      url: url
       dataType: "json"
       beforeSend: (e) ->
         $("#loading").show()

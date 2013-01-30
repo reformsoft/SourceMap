@@ -3,7 +3,14 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
-    @services = Service.all
+    if (params[:category])
+      category = Category.find_by_name(params[:category])
+      @services = Service.find_by_category_id(category.id)
+    else
+      @services = Service.all
+    end
+
+
 
     respond_to do |format|
       format.html # index.html.erb
@@ -11,14 +18,6 @@ class ServicesController < ApplicationController
     end
   end
   
-  def get_services_by_category
-    @services = Service.find_by_category_id(params[:category_id])
-    
-    respond_to do |format|
-      format.json { render json: @services }
-    end
-  end
-
   # GET /services/1
   # GET /services/1.json
   def show

@@ -21,9 +21,6 @@
 	body { height: 100%; margin: 0; padding: 0 }
 	#map_canvas { height: 100% }
 	</style>
-
-	
-
 </head>
 <body>
 
@@ -32,9 +29,9 @@
 			<li id="popular_views">Popular Views:</li>
 			
 			<%
-			@categories.each do |category|
+			@categories.each do |c|
 				%> <li> 
-				<%= link_to category.name, { :controller => "services", :action => "get_services_by_category", :category_id => category.id }, :class => "category" %> 
+				<%= link_to c.name, services_path(:category => c.name), :class => "category" %> 
 				</li> <% 
 			end
 			%>
