@@ -62,7 +62,8 @@ MapTap::Application.routes.draw do
   resources :locations
   resources :categories
   
-  root :to => 'map#index'
+  root :to => 'map#index', :as => :root
+
   match '/:action', :controller => 'map'
   
   match '/category/:category_id', :controller => 'services', :action => 'get_services_by_category'

@@ -22,18 +22,11 @@ class ServicesController < ApplicationController
         service_with_data[t.name] = t.value
       end
 
-      puts service_with_data
-
-
       @services << service_with_data 
     end
 
-    puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
-    puts @services.count
-
-
     respond_to do |format|
-      format.html # index.html.erb
+      format.html { redirect_to :controller => :map, :action => :index }
       format.json { render json: @services }
     end
   end
