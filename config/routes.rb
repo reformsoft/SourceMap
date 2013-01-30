@@ -66,4 +66,12 @@ MapTap::Application.routes.draw do
   match '/:action', :controller => 'map'
   
   match '/category/:category_id', :controller => 'services', :action => 'get_services_by_category'
+
+  #get '*what' => 'services#halp'
+  #match '*path/new', :controller => 'services', :action => 'new'
+  #match '*path/:id', :controller => 'services', :action => 'show'
+  #match '*path/:id/edit', :controller => 'services', :action => 'edit'
+  #match '*path', :controller => 'services', :action => 'index'
+
+
 end
