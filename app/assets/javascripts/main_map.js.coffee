@@ -2,6 +2,23 @@ data = 3242:
   X: 49.457637
   Y: -2.58
 
+markersArray = []
+map = ''
+
+deleteOverlays = ->
+  if markersArray
+    for i of markersArray
+      markersArray[i].setMap null
+    markersArray.length = 0
+
+addMarker = (location, name) ->
+  marker = new google.maps.Marker(
+    position: location
+    map: map
+    title: name
+    )
+  markersArray.push marker
+
 $ ->
   myOptions =
     center: new google.maps.LatLng(49.457637, -2.580414)
@@ -10,6 +27,7 @@ $ ->
 
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions)
   $(".category").click ->
+    deleteOverlays()
     url = $(this).attr('href')
     type = $(this).data("type")
 
@@ -23,12 +41,7 @@ $ ->
       success: (e) ->
         $.each e, (key, value) ->
           myLatlng = new google.maps.LatLng(value.lat, value.lng)
-          marker = new google.maps.Marker(
-            position: myLatlng
-            map: map
-            title: value.name
-          )
-
+          addMarker myLatlng, value.name
 
       complete: (e) ->
         $("#loading").hide()
