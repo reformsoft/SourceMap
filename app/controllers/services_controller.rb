@@ -6,10 +6,10 @@ class ServicesController < ApplicationController
     if (params[:category])
       category = Category.find_by_name(params[:category])
       raw_services = Service.where("category_id = ?", category.id)
-    else
-      raw_services = Service.all
-    end
-
+    #else
+    #  raw_services = Service.all
+  end
+  if (raw_services)
     @services = Array.new
     raw_services.each do |s|
       service_with_data = Hash.new
@@ -24,13 +24,14 @@ class ServicesController < ApplicationController
 
       @services << service_with_data 
     end
-
-    respond_to do |format|
-      format.html { redirect_to :controller => :map, :action => :index }
-      format.json { render json: @services }
-    end
   end
-  
+
+  respond_to do |format|
+    format.html
+    format.json { render json: @services }
+  end
+end
+
   # GET /services/1
   # GET /services/1.json
   def show
