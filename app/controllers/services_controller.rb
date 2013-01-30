@@ -5,11 +5,31 @@ class ServicesController < ApplicationController
   def index
     if (params[:category])
       category = Category.find_by_name(params[:category])
-      @services = Service.find_by_category_id(category.id)
+      raw_services = Service.where("category_id = ?", category.id)
     else
-      @services = Service.all
+      raw_services = Service.all
     end
 
+    @services = Array.new
+    raw_services.each do |s|
+      service_with_data = Hash.new
+
+      service_with_data[:id] = s.id
+      service_with_data[:lat] = s.lat
+      service_with_data[:lng] = s.lng
+
+      s.tags.each do |t|
+        service_with_data[t.name] = t.value
+      end
+
+      puts service_with_data
+
+
+      @services << service_with_data 
+    end
+
+    puts "AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA"
+    puts @services.count
 
 
     respond_to do |format|

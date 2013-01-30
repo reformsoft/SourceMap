@@ -13,6 +13,7 @@
 
 Tag.destroy_all
 Service.destroy_all
+Category.destroy_all
 
 #####
 # China Red
@@ -20,7 +21,7 @@ Service.destroy_all
 Category.create( { name: "Restaurant", template: "Restaurant" })
 Service.create( { :lat => 49.46392, :lng => -2.53518, :category =>  Category.last  }, :without_protection => true)
 Tag.create( { :name => "Keywords", :value => "Restaurant, Chinese, Takeaway", :services => [ Service.last ] }, :without_protection => true)
-Tag.create( { :name => "Name", :value => "China Red", :services => [ Service.last ] }, :without_protection => true)
+Tag.create( { :name => "name", :value => "China Red", :services => [ Service.last ] }, :without_protection => true)
 
 #####
 # Guernsey Airport
