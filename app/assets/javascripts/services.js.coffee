@@ -8,6 +8,7 @@ data = 3242:
 
 markersArray = []
 map = ''
+infoWindow = ''
 
 deleteOverlays = ->
   if markersArray
@@ -21,6 +22,10 @@ addMarker = (location, name) ->
     map: map
     title: name
     )
+
+  google.maps.event.addListener marker, 'click', ->
+    infoWindow.open map, marker
+
   markersArray.push marker
 
 addMarkers = (e) ->
@@ -51,6 +56,8 @@ $ ->
     mapTypeId: google.maps.MapTypeId.ROADMAP
 
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions)
+
+  infoWindow = new google.maps.InfoWindow { content: "Hello" }
 
   loadServices ''
 
