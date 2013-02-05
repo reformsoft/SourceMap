@@ -19,7 +19,7 @@ class ServicesController < ApplicationController
       service_with_data[:lng] = s.lng
 
       s.tags.each do |t|
-        service_with_data[t.name] = t.value
+        service_with_data[t.name.downcase] = t.value
       end
 
       @services << service_with_data 
@@ -38,7 +38,7 @@ end
     @service = Service.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html  { render :layout => false }
       format.json { render json: @service }
     end
   end

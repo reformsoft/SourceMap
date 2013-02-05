@@ -16,7 +16,7 @@ deleteOverlays = ->
       markersArray[i].setMap null
     markersArray.length = 0
 
-addMarker = (location, name) ->
+addMarker = (location, name, id) ->
   marker = new google.maps.Marker(
     position: location
     map: map
@@ -24,14 +24,22 @@ addMarker = (location, name) ->
     )
 
   google.maps.event.addListener marker, 'click', ->
-    infoWindow.open map, marker
+   $.ajax
+      url: "services/" + id
+      dataType: "html"
+      success: (e) ->
+        infoWindow.content = e
+        infoWindow.open map, marker
+      error: (e) ->
+        alert e
+    
 
   markersArray.push marker
 
 addMarkers = (e) ->
   for value in e
     myLatlng = new google.maps.LatLng(value.lat, value.lng)
-    addMarker myLatlng, value.name
+    addMarker myLatlng, value.name, value.id
 
 loadServices = (url) -> 
   $.ajax
@@ -57,7 +65,10 @@ $ ->
 
   map = new google.maps.Map(document.getElementById("map_canvas"), myOptions)
 
-  infoWindow = new google.maps.InfoWindow { content: "Hello" }
+  google.maps.event.addListener map, 'click', ->
+    infoWindow.close()
+
+  infoWindow = new google.maps.InfoWindow content: ""
 
   loadServices ''
 
