@@ -11,29 +11,27 @@ class ServicesController < ApplicationController
 
       # Must be a better ruby way to do the following...    
       matching_tags.each do |m| 
-        m.services.each do |s|
-         raw_services << s 
-       end
+       raw_services << m.service 
      end
      raw_services.uniq!
    end
 
-    puts raw_services
+   puts raw_services
 
-    @services = Array.new
-    raw_services.each do |s|
-      service_with_data = Hash.new
+   @services = Array.new
+   raw_services.each do |s|
+    service_with_data = Hash.new
 
-      service_with_data[:id] = s.id
-      service_with_data[:lat] = s.lat
-      service_with_data[:lng] = s.lng
+    service_with_data[:id] = s.id
+    service_with_data[:lat] = s.lat
+    service_with_data[:lng] = s.lng
 
-      s.tags.each do |t|
-        service_with_data[t.name.downcase] = t.value
-      end
-
-      @services << service_with_data 
+    s.tags.each do |t|
+      service_with_data[t.name.downcase] = t.value
     end
+
+    @services << service_with_data 
+  end
 
   respond_to do |format|
     format.html

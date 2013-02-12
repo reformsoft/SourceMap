@@ -11,25 +11,23 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212175945) do
+ActiveRecord::Schema.define(:version => 20130117182437) do
 
   create_table "services", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
     t.float    "lat"
     t.float    "lng"
-  end
-
-  create_table "services_tags", :id => false, :force => true do |t|
-    t.integer "service_id"
-    t.integer "tag_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "tags", :force => true do |t|
     t.string   "name"
+    t.string   "value"
+    t.integer  "service_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "value"
   end
+
+  add_index "tags", ["service_id"], :name => "index_tags_on_service_id"
 
 end
