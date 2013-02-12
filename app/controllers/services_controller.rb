@@ -3,13 +3,23 @@ class ServicesController < ApplicationController
   # GET /services
   # GET /services.json
   def index
-    if (params[:category])
-      category = Category.find_by_name(params[:category])
-      raw_services = Service.where("category_id = ?", category.id)
-    #else
-    #  raw_services = Service.all
-  end
-  if (raw_services)
+    raw_services = Array.new
+
+    if (params[:term])
+      q = "%#{params[:term]}%"
+      matching_tags = Tag.where("value LIKE ?", q)
+
+      # Must be a better ruby way to do the following...    
+      matching_tags.each do |m| 
+        m.services.each do |s|
+         raw_services << s 
+       end
+     end
+     raw_services.uniq!
+   end
+
+    puts raw_services
+
     @services = Array.new
     raw_services.each do |s|
       service_with_data = Hash.new
@@ -24,7 +34,6 @@ class ServicesController < ApplicationController
 
       @services << service_with_data 
     end
-  end
 
   respond_to do |format|
     format.html

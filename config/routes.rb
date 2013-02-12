@@ -59,9 +59,7 @@ MapTap::Application.routes.draw do
 
   resources :tags
   resources :services
-  resources :locations
-  resources :categories
-  
+
   root :to => 'services#index'
   #'map#index', :as => :root
 

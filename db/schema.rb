@@ -11,24 +11,14 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130121210222) do
-
-  create_table "categories", :force => true do |t|
-    t.string   "name"
-    t.string   "template"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
+ActiveRecord::Schema.define(:version => 20130212175945) do
 
   create_table "services", :force => true do |t|
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
     t.float    "lat"
     t.float    "lng"
-    t.integer  "category_id"
   end
-
-  add_index "services", ["category_id"], :name => "index_services_on_category_id"
 
   create_table "services_tags", :id => false, :force => true do |t|
     t.integer "service_id"

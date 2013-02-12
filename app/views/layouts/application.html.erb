@@ -29,9 +29,9 @@
 			<li id="popular_views">Popular Views:</li>
 			
 			<%
-			@categories.each do |c|
+			["Restaurant", "Pub", "Airport"].each do |c|
 				%> <li> 
-				<%= link_to c.name, services_path(:category => c.name), :class => "category" %> 
+				<%= link_to c, services_path(:term => c), :class => "category" %> 
 				</li> <% 
 			end
 			%>

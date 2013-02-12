@@ -13,29 +13,24 @@
 
 Tag.destroy_all
 Service.destroy_all
-Category.destroy_all
 
 #####
 # China Red
 #####
-Category.create( { name: "Restaurant", template: "Restaurant" })
-Service.create( { :lat => 49.46392, :lng => -2.53518, :category =>  Category.last  }, :without_protection => true)
-Tag.create( { :name => "Keywords", :value => "Restaurant, Chinese, Takeaway", :services => [ Service.last ] }, :without_protection => true)
+Service.create( { :lat => 49.46392, :lng => -2.53518 }, :without_protection => true)
+Tag.create( { :name => "Keywords", :value => "Restaurant Chinese Takeaway", :services => [ Service.last ] }, :without_protection => true)
 Tag.create( { :name => "Name", :value => "China Red", :services => [ Service.last ] }, :without_protection => true)
 
 #####
 # Guernsey Airport
 #####
-Category.create( { name: "Airports", template: "Airport" })
-Service.create({ :lat => 49.43197, :lng => -2.59643, :category =>  Category.last  }, :without_protection => true)
+Service.create({ :lat => 49.43197, :lng => -2.59643 }, :without_protection => true)
 Tag.create({ :name => "Name", :value => "Guernsey Airport", :services => [ Service.last ] }, :without_protection => true)
-Tag.create({ :name => "Keywords", :value => "Airport, Travel", :services => [ Service.last ] }, :without_protection => true)
+Tag.create({ :name => "Keywords", :value => "Airport Travel", :services => [ Service.last ] }, :without_protection => true)
 
 #####
 # Captin's
 #####
-Category.create( { name: "Pubs", template: "Pub" })
-Service.create( { :lat => 49.43177, :lng => -2.55713, :category =>  Category.last  }, :without_protection => true)
-#Tag.find_by_value("Restaurant").services << Service.last
-Tag.create({ name: "Name", value: "Hangman's Inn", :services => [ Service.last ] }, :without_protection => true)
-Tag.create({ name: "Keywords", value: "Hangman's Inn", :services => [ Service.last ] }, :without_protection => true)
+Service.create( { :lat => 49.43177, :lng => -2.55713 }, :without_protection => true)
+Tag.create({ name: "Name", value: "The Captin's", :services => [ Service.last ] }, :without_protection => true)
+Tag.create({ name: "Keywords", value: "Restaurant Pub", :services => [ Service.last ] }, :without_protection => true)
