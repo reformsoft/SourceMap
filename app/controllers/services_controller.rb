@@ -69,7 +69,7 @@ end
   # POST /services
   # POST /services.json
   def create
-    @service = Service.new(params[:service])
+    @service = Service.init_with_attributes(params[:service], params[:tags])
 
     respond_to do |format|
       if @service.save

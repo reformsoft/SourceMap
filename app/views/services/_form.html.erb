@@ -1,29 +1,100 @@
+<script type="text/javascript">
+	$(function() {
+		var add_tag_template = $("#add_tag_template");
+		var form_entry_template = $("#form_entry_template");
+		var hidden_tag_count = $("#hidden_tag_count");
+		
+		add_tag_template.hide();
+		form_entry_template.hide();
+		
+		$("#add_tag").click(function() {
+			// needs a name first
+			// then a value
+			//add_property_template.show();
+			
+			$("#tag_details").before(add_tag_template.html());
+			
+			return false;
+		});
+		
+		$(".add_tag_container a").live("click", function() {
+			var tag_name = $(this).parent().find(".tag_name").val();
+			var tag_value = $(this).parent().find(".tag_value").val();
+			
+			var template_html = form_entry_template.html();
+			$(template_html).find("label").attr("for", tag_name).val(tag_name);
+			$(template_html).find("input").attr("name", tag_name).attr("value", tag_value);
+			$(".form_entry:last").after(template_html);
+			return false;
+		});
+		
+		$(".delete_tag").click(function() {
+			$(this).parent().slideUp('fast', function() {
+				$(this).find("input").attr("disabled", true);
+				var count = $(".form_entry").filter(":hidden").length;
+				hidden_tag_count.text(count.toString());
+			});
+			
+			return false;
+		});
+	});
+</script>
+
+
+<div id="add_tag_template">
+	<div class="add_tag_container">
+		<label for="tag_name">Name</label>
+		<input type="text" class="tag_name" name="tag_name" />
+	
+		<label for="tag_value">Value</label>
+		<input type="text" class="tag_value" name="tag_value" />
+		
+		<a href="#">Save</a>
+	</div>
+</div>
+
+<div id="form_entry_template">
+	<label></label>
+	<input type="text" />
+	<a href="#" class="delete_tag">X</a>
+</div>
+
 <%= form_for(@service) do |f| %>
-  <% if @service.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
+	<% if @service.errors.any? %>
+		<div id="error_explanation">
+			<h2><%= pluralize(@service.errors.count, "error") %> prohibited this service from being saved:</h2>
+			<ul>
+				<% @service.errors.full_messages.each do |msg| %>
+					<li><%= msg %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
 
-      <ul>
-      <% @service.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
+	<div class="field">
+		<%= f.label :lat %><br />
+		<%= f.text_field :lat %>
+	</div>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
-  </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
-  </div>
-  <div class="field">
-    <%= f.label :location %><br />
-    <%= f.text_field :location %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	<div class="field">
+    	<%= f.label :lng %><br />
+    	<%= f.text_field :lng %>
+  	</div>
+
+	<% @service.tags.each do |tag| %>
+		<div class="form_entry">
+			<%= label :tags, tag.name %>
+			<%= text_field :tags, tag.name, :value => tag.value %>
+			<a href="#" class="delete_tag">X</a>
+		</div>
+	<% end %>
+	
+	<div id="tag_details">
+		<a href="#" id="hidden_tag_count">0</a>
+		<a href="#" id="add_tag">Add Tag</a>
+	</div>
+	
+	<div class="actions">
+		<%= f.submit %>
+	</div>
 <% end %>
