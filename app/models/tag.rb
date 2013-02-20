@@ -1,9 +1,9 @@
 class Tag < ActiveRecord::Base
-  attr_accessible :name, :value
+  #attr_accessible :name, :value
   belongs_to :service
   
-  def initialize(name, value)
-    self.name = name
-    self.value = value
-  end
+  #def initialize(name, value)
+  #  self.name = name
+  #  self.value = value
+  #end
 end

@@ -1,13 +1,17 @@
+<% if @adverts %>
+<h2>Friends</h2>
 <ul>
+  <% @adverts.each do |s| %>
+  <% name_tag = s.tags.detect { |t| t.name == "Name" } %>
+  <% description_tag = s.tags.detect { |t| t.name == "Description" } %>
+  <% website_tag = s.tags.detect { |t| t.name == "Website" } %>
   <li>
-    <h3><a href="#">Da Nello's</a></h3>
-    <p>A posh restaurant for upper-class people</p>
-    <a href="#" class="info">Info</a>
-    <a href="#" id="3242" class="goto">Goto</a>
+    <h3><%= link_to name_tag.value, website_tag.value %></h3>
+    <%= description_tag.value.html_safe %>
+    <%= link_to 'Goto', root_path(:name => name_tag.value), :class => "goto" %> 
     <div style="clear:both"></div>
   </li>
-  <li>
-    <h3><a href="#">Random Restaurant</a></h3>
-    <p>SOmething ora rather in ehere</p>
-  </li>
+  <% end %>
 </ul>
+<% end %>
+<%= link_to 'Contact', contact_path %>

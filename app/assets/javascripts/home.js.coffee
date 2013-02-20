@@ -41,6 +41,11 @@ addMarkers = (e) ->
     myLatlng = new google.maps.LatLng(value.lat, value.lng)
     addMarker myLatlng, value.name, value.id
 
+  if markersArray
+    if markersArray.length == 1
+      google.maps.event.trigger(markersArray[0], 'click');
+
+
 loadServices = (url) -> 
   $.ajax
       url: url
@@ -80,28 +85,8 @@ $ ->
     false
 
   $(".goto").click ->
-    id = parseInt($(this).attr("id"))
-    r = data[id]
-    
-    # with the data we've got the X/Y, so using the map
-    # zoom and go to that point
-    map.panTo new google.maps.LatLng(r.X, r.Y)
-    map.setZoom 18
-
-  $(".info").click ->
-    
-    # show a dialog with all info
-    $.ajax
-      url: "/map/types"
-      beforeSend: (xhr) ->
-        $.blockUI {}
-
-      
-      #opoh rara
-      success: (data) ->
-        $.unblockUI()
-
-      error: ->
-        $.unblockUI()
-
-
+    deleteOverlays()
+    url = $(this).attr('href')
+    window.history.pushState path: url, '', url 
+    loadServices url
+    false
