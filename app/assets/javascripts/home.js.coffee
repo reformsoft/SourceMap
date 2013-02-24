@@ -80,13 +80,13 @@ $ ->
   $(".category").click ->
     deleteOverlays()
     url = $(this).attr('href')
-    window.history.pushState path: url, '', url 
+    window.history.pushState path: url, '', url
     loadServices url
     false
 
   $(".goto").click ->
     deleteOverlays()
     url = $(this).attr('href')
-    window.history.pushState path: url, '', url 
+    window.history.pushState path: url, '', url
     loadServices url
     false
