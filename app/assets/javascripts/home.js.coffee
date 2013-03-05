@@ -82,11 +82,22 @@ $ ->
     url = $(this).attr('href')
     window.history.pushState path: url, '', url
     loadServices url
-    false
+    return false
 
   $(".goto").click ->
     deleteOverlays()
     url = $(this).attr('href')
     window.history.pushState path: url, '', url
     loadServices url
-    false
+    return false
+  
+  $("#searchbox").keydown (e) ->
+    
+    if e.which == 13
+      deleteOverlays()
+      url = '?term=' + $(this).val()
+      window.history.pushState path: url, '', url
+      loadServices url
+    return true
+
+  return true

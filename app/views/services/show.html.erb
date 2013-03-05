@@ -3,8 +3,9 @@
 <% description_tag = @service.tags.detect { |t| t.name == "Description" } %>
 <% address_tag = @service.tags.detect { |t| t.name == "Address" } %>
 <% phone_tag = @service.tags.detect { |t| t.name == "Phone" } %>
-
+<% if name_tag %>
 <h1><%= name_tag.value %></h1>
+<% end %>
 <% if description_tag %>
 <p><b><%= description_tag.name %>:</b><%= description_tag.value %></p>
 <% end %>

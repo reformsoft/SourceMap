@@ -25,15 +25,16 @@
 <body>
 
 	<div id="top">
+		<input name="searchbox" id="searchbox" type="search" placeholder="Search...">
 		<ul>
 			<li id="popular_views">Common Terms:</li>
-			
+
 			<%["Restaurant", "Pub", "Wedding", "Takeaway", "Photography", "Charity", "Design", "Airport"].sort.each do |c| %> 
 			<li> 
 				<%= link_to c, root_path(:term => c), :class => "category" %> 
 			</li> 
 			<% end %>
-			
+
 			<li><a href="/more">More &raquo;</a></li>
 		</ul>
 	</div>
