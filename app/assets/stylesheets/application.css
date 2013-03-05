@@ -115,3 +115,8 @@ body {
 	font-size:0.75em;
 	float:right;
 }
+
+#searchbox {
+	margin: 3px;
+	padding: 0;
+}

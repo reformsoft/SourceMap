@@ -29,7 +29,7 @@
 		<ul>
 			<li id="popular_views">Common Terms:</li>
 
-			<%["Restaurant", "Pub", "Wedding", "Takeaway", "Photography", "Charity", "Design", "Airport"].sort.each do |c| %> 
+			<%["Restaurants", "Pubs", "Weddings", "Takeaways", "Photography", "Charities", "Designers"].sort.each do |c| %> 
 			<li> 
 				<%= link_to c, root_path(:term => c), :class => "category" %> 
 			</li> 

@@ -10,7 +10,7 @@ Service.destroy_all
 #####
 Service.create({ :lat => 49.468243, :lng => -2.597061 }, :without_protection => true)
 Tag.create({ :name => "Name", :value => "Campbell Sauvarin Photography", :service => Service.last }, :without_protection => true)
-Tag.create({ :name => "Keywords", :value => "Wedding Photography", :service => Service.last }, :without_protection => true)
+Tag.create({ :name => "Keywords", :value => "Weddings Photography", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Phone", :value => "07781 154989", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Website", :value => "http://csp.gg", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Email", :value => "studio@csp.gg", :service => Service.last }, :without_protection => true)
@@ -24,7 +24,7 @@ Tag.create({ :name => "Description", :value => "<p>Campbell Sauvarin Photography
 #####
 Service.create({ :lat => 49.468818, :lng => -2.536965 }, :without_protection => true)
 Tag.create({ :name => "Name", :value => "Cardboard Orchestra", :service => Service.last }, :without_protection => true)
-Tag.create({ :name => "Keywords", :value => "Illustration Identity Squid Website Renovate Camper Vans Print Photography", :service => Service.last }, :without_protection => true)
+Tag.create({ :name => "Keywords", :value => "Illustration Designers Identity Squid Website Renovate Camper Vans Print Photography", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Phone", :value => "07839 173877", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Website", :value => "http://cardboard-orchestra.com/", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Email", :value => "nik@cardboard-orchestra.com", :service => Service.last }, :without_protection => true)
@@ -44,7 +44,7 @@ Tag.create({ :name => "Description", :value => "<p>
 #####
 Service.create({ :lat => 49.468818, :lng => -2.536965 }, :without_protection => true)
 Tag.create({ :name => "Name", :value => "Hope For a Child", :service => Service.last }, :without_protection => true)
-Tag.create({ :name => "Keywords", :value => "Charity", :service => Service.last }, :without_protection => true)
+Tag.create({ :name => "Keywords", :value => "Charity Charities", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Phone", :value => "01481 727547", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Website", :value => "http://hope.gg/", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Email", :value => "office@hopeforachild.org.uk", :service => Service.last }, :without_protection => true)
@@ -69,7 +69,7 @@ Tag.create({ :name => "Description", :value => "<p>Our mission is to provide cos
 # China Red
 #####
 Service.create( { :lat => 49.46392, :lng => -2.53518 }, :without_protection => true)
-Tag.create( { :name => "Keywords", :value => "Restaurant Chinese Takeaway", :service => Service.last }, :without_protection => true)
+Tag.create( { :name => "Keywords", :value => "Restaurants Chinese Takeaways", :service => Service.last }, :without_protection => true)
 Tag.create( { :name => "Name", :value => "China Red", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Phone", :value => "01481 723888", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Website", :value => "http://chinaredguernsey.com/", :service => Service.last }, :without_protection => true)
@@ -79,7 +79,7 @@ Tag.create({ :name => "Website", :value => "http://chinaredguernsey.com/", :serv
 #####
 Service.create({ :lat => 49.43197, :lng => -2.59643 }, :without_protection => true)
 Tag.create({ :name => "Name", :value => "Guernsey Airport", :service => Service.last }, :without_protection => true)
-Tag.create({ :name => "Keywords", :value => "Airport Travel", :service => Service.last }, :without_protection => true)
+Tag.create({ :name => "Keywords", :value => "Airports Travel", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Phone", :value => "01481 237766", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Website", :value => "http://www.guernsey-airport.gov.gg/", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Email", :value => "airport@gov.gg", :service => Service.last }, :without_protection => true)
@@ -90,7 +90,7 @@ Tag.create({ :name => "Address", :value => "Guernsey Airport, La Villiaze, Fores
 #####
 Service.create( { :lat => 49.430754, :lng => -2.558273 }, :without_protection => true)
 Tag.create({ name: "Name", value: "The Captain's", :service => Service.last }, :without_protection => true)
-Tag.create({ name: "Keywords", value: "Restaurant Hotel Pub", :service => Service.last }, :without_protection => true)
+Tag.create({ name: "Keywords", value: "Restaurants Hotels Pubs", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Phone", :value => "01481 238990", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Website", :value => "http://www.thecaptainshotel.co.uk/", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Email", :value => "enquiries@thecaptainshotel.co.uk", :service => Service.last }, :without_protection => true)
@@ -100,7 +100,7 @@ Tag.create({ :name => "Email", :value => "enquiries@thecaptainshotel.co.uk", :se
 #####
 Service.create( { :lat => 49.477487, :lng => -2.590425 }, :without_protection => true)
 Tag.create({ name: "Name", value: "The Rockmount", :service => Service.last }, :without_protection => true)
-Tag.create({ name: "Keywords", value: "Restaurant Pub", :service => Service.last }, :without_protection => true)
+Tag.create({ name: "Keywords", value: "Restaurants Pubs", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Phone", :value => "01481 256757", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Address", :value => "The Rockmount, Cobo Coast Road, Guernsey, GY5 7HB", :service => Service.last }, :without_protection => true)
 
@@ -121,7 +121,7 @@ Tag.create({ :name => "Address", :value => "The Cobo Bay Hotel, Cobo Coast Road,
 #####
 Service.create( { :lat => 49.429908, :lng => -2.559537 }, :without_protection => true)
 Tag.create({ name: "Name", value: "Les Douvres", :service => Service.last }, :without_protection => true)
-Tag.create({ name: "Keywords", value: "Restaurant Hotel Pub", :service => Service.last }, :without_protection => true)
+Tag.create({ name: "Keywords", value: "Restaurants Hotels Pubs", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Phone", :value => "01481 238731", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Website", :value => "http://www.lesdouvreshotel.co.uk/", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Email", :value => "info@lesdouvreshotel.co.uk", :service => Service.last }, :without_protection => true)
@@ -132,7 +132,7 @@ Tag.create({ :name => "Address", :value => "Les Douvres Hotel, La Fosse, St Mart
 #####
 Service.create( { :lat => 49.43198, :lng => -2.556705 }, :without_protection => true)
 Tag.create({ name: "Name", value: "Bella Luce", :service => Service.last }, :without_protection => true)
-Tag.create({ name: "Keywords", value: "Restaurant Hotel Pub", :service => Service.last }, :without_protection => true)
+Tag.create({ name: "Keywords", value: "Restaurants Hotels Pubs", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Phone", :value => "01481 238764", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Website", :value => "http://www.bellalucehotel.com/", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Email", :value => "wakeup@bellalucehotel.com", :service => Service.last }, :without_protection => true)
@@ -144,7 +144,7 @@ Tag.create({ :name => "Address", :value => "Bella Luce Hotel & Restaurant, La Fo
 #####
 Service.create( { :lat => 49.458072, :lng => -2.534731 }, :without_protection => true)
 Tag.create({ name: "Name", value: "RED", :service => Service.last }, :without_protection => true)
-Tag.create({ name: "Keywords", value: "Restaurant Pub", :service => Service.last }, :without_protection => true)
+Tag.create({ name: "Keywords", value: "Restaurants Pubs", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Phone", :value => "01481 700299", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Website", :value => "http://www.red.gg/", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Email", :value => "eat@red.gg", :service => Service.last }, :without_protection => true)
@@ -168,7 +168,7 @@ Tag.create({ :name => "Open", :value => "Monday - Saturday : 8.30am - 5.30pm", :
 #####
 Service.create( { :lat => 49.452905, :lng => -2.53737 }, :without_protection => true)
 Tag.create({ name: "Name", value: "Cock & Bull", :service => Service.last }, :without_protection => true)
-Tag.create({ name: "Keywords", value: "Pub", :service => Service.last }, :without_protection => true)
+Tag.create({ name: "Keywords", value: "Pubs", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Phone", :value => "01481 722660", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Address", :value => "Cock & Bull, 2 Lower Hauteville, GY1 1LL", :service => Service.last }, :without_protection => true)
 
@@ -200,7 +200,7 @@ Tag.create({ name: "Keywords", value: "Aquarium Tourist", :service => Service.la
 #####
 Service.create( { :lat => 49.448448, :lng => -2.531448 }, :without_protection => true)
 Tag.create({ name: "Name", value: "La Valette Underground Military Museum", :service => Service.last }, :without_protection => true)
-Tag.create({ name: "Keywords", value: "Museum Tourist", :service => Service.last }, :without_protection => true)
+Tag.create({ name: "Keywords", value: "Museums Tourist", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Phone", :value => "01481 194045", :service => Service.last }, :without_protection => true)
 Tag.create({ :name => "Address", :value => "La Valette Underground Military Museum, La Valette, St Peter Port, GY1 1AX", :service => Service.last }, :without_protection => true)
 
