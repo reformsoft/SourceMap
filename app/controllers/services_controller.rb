@@ -28,6 +28,10 @@ class ServicesController < ApplicationController
   def new
     @service = Service.new
 
+      1.times do
+        @service.tags.build
+      end
+
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @service }
@@ -42,7 +46,7 @@ class ServicesController < ApplicationController
   # POST /services
   # POST /services.json
   def create
-    @service = Service.init_with_attributes(params[:service], params[:tags])
+    @service = Service.new(params[:service])
 
     respond_to do |format|
       if @service.save
