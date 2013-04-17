@@ -3,101 +3,102 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 data = 3242:
-  X: 49.457637
-  Y: -2.58
+	X: 49.457637
+	Y: -2.58
 
 markersArray = []
 map = ''
 infoWindow = ''
 
 deleteOverlays = ->
-  if markersArray
-    for i of markersArray
-      markersArray[i].setMap null
-    markersArray.length = 0
+	if markersArray
+		for i of markersArray
+			markersArray[i].setMap null
+		markersArray.length = 0
 
 addMarker = (location, name, id) ->
-  marker = new google.maps.Marker(
-    position: location
-    map: map
-    title: name
-    )
+	marker = new google.maps.Marker(
+		position: location
+		map: map
+		title: name
+	)
 
-  google.maps.event.addListener marker, 'click', ->
-   $.ajax
-      url: "home/" + id
-      dataType: "html"
-      success: (e) ->
-        infoWindow.content = e
-        infoWindow.open map, marker
-      error: (e) ->
-        alert e
-    
+	google.maps.event.addListener marker, 'click', ->
+		$.ajax
+			cache: false
+			url: "home/" + id
+			dataType: "html"
+			success: (e) ->
+				infoWindow.content = e
+				infoWindow.open map, marker
+			error: (e) ->
+				alert e
 
-  markersArray.push marker
+	markersArray.push marker
 
 addMarkers = (e) ->
-  for value in e
-    myLatlng = new google.maps.LatLng(value.lat, value.lng)
-    addMarker myLatlng, value.name, value.id
+	for value in e
+		myLatlng = new google.maps.LatLng(value.lat, value.lng)
+		addMarker myLatlng, value.name, value.id
 
-  if markersArray
-    if markersArray.length == 1
-      google.maps.event.trigger(markersArray[0], 'click');
+	if markersArray
+		if markersArray.length == 1
+			google.maps.event.trigger(markersArray[0], 'click');
 
 
 loadServices = (url) -> 
-  $.ajax
-      url: url
-      dataType: "json"
-      beforeSend: (e) ->
-        $("#loading").show()
+	deleteOverlays()
+	window.history.pushState path: url, '', url
+	
+	$.ajax
+		cache: false
+		url: url
+		dataType: "json"
+		beforeSend: (e) ->
+		  $("#loading").show()
 
-      success: (e) ->
-        addMarkers e
+		success: (e) ->
+		  addMarkers e
 
-      complete: (e) ->
-        $("#loading").hide()
+		complete: (e) ->
+		  $("#loading").hide()
 
-      error: (e) ->
-        alert e
+		error: (e) ->
+		  alert e
+
+
 
 $ ->
-  myOptions =
-    center: new google.maps.LatLng(49.457637, -2.580414)
-    zoom: 12
-    mapTypeId: google.maps.MapTypeId.ROADMAP
 
-  map = new google.maps.Map(document.getElementById("map_canvas"), myOptions)
+	myOptions =
+		center: new google.maps.LatLng(49.457637, -2.580414)
+		zoom: 12
+		mapTypeId: google.maps.MapTypeId.ROADMAP
 
-  google.maps.event.addListener map, 'click', ->
-    infoWindow.close()
+	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions)
 
-  infoWindow = new google.maps.InfoWindow content: ""
+	infoWindow = new google.maps.InfoWindow content: ""
 
-  loadServices ''
+	google.maps.event.addListener map, 'click', ->
+		infoWindow.close()
+		
+	loadServices $(this).attr('href')
 
-  $(".category").click ->
-    deleteOverlays()
-    url = $(this).attr('href')
-    window.history.pushState path: url, '', url
-    loadServices url
-    return false
+	$(".category, .goto").click ->
+		loadServices $(this).attr('href')
+		return false
 
-  $(".goto").click ->
-    deleteOverlays()
-    url = $(this).attr('href')
-    window.history.pushState path: url, '', url
-    loadServices url
-    return false
-  
-  $("#searchbox").keydown (e) ->
-    
-    if e.which == 13
-      deleteOverlays()
-      url = '?term=' + $(this).val()
-      window.history.pushState path: url, '', url
-      loadServices url
-    return true
+	$("#searchbox").keydown (e) ->
+		if e.which == 13
+			deleteOverlays()
+			url = '?term=' + $(this).val()
+			window.history.pushState path: url, '', url
+			loadServices url
+			return true
+			
+	$(window).bind 'popstate', (e) ->
+		state = e.originalEvent.state
+		if state
+			loadServices state.path
 
-  return true
+	return true
