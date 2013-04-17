@@ -9,6 +9,7 @@ data = 3242:
 markersArray = []
 map = ''
 infoWindow = ''
+priorPushUrl = ''
 
 deleteOverlays = ->
 	if markersArray
@@ -47,6 +48,12 @@ addMarkers = (e) ->
 
 
 loadServices = (url) -> 
+	# don't push anything or do anything for that matter!
+	if priorPushUrl == url
+		return
+		
+	priorPushUrl = url
+		
 	deleteOverlays()
 	window.history.pushState path: url, '', url
 	
