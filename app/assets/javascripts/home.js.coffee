@@ -1,7 +1,3 @@
-# Place all the behaviors and hooks related to the matching controller here.
-# All this logic will automatically be available in application.js.
-# You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
-
 data = 3242:
 	X: 49.457637
 	Y: -2.58
@@ -47,15 +43,17 @@ addMarkers = (e) ->
 			google.maps.event.trigger(markersArray[0], 'click');
 
 
-loadServices = (url) -> 
+loadServices = (url, isBack) -> 
 	# don't push anything or do anything for that matter!
-	if priorPushUrl == url
+	if priorPushUrl == url && !isBack
 		return
 		
 	priorPushUrl = url
 		
 	deleteOverlays()
-	window.history.pushState path: url, '', url
+	
+	if !isBack
+		window.history.pushState path: url, '', url
 	
 	$.ajax
 		cache: false
@@ -73,8 +71,6 @@ loadServices = (url) ->
 		error: (e) ->
 		  alert e
 
-
-
 $ ->
 
 	myOptions =
@@ -89,10 +85,33 @@ $ ->
 	google.maps.event.addListener map, 'click', ->
 		infoWindow.close()
 		
-	loadServices $(this).attr('href')
+	loadServices $(this).attr('href'), false
 
 	$(".category, .goto").click ->
-		loadServices $(this).attr('href')
+		loadServices $(this).attr('href'), false
+		return false
+		
+	#$("#more_overlay").dialog
+#		autoOpen: false
+#		show:
+#			effect: "blind"
+#			duration: 500
+#		hide:
+#			effect: "blind"
+#			duration: 500
+		
+		
+	$("#more").click ->
+		# show view here
+		$.ajax
+			cache: false
+			url: "/more"
+			dataType: "html"
+			success: (e) ->
+				$("#more_overlay").content(e).dialog("open")
+			error: (e) ->
+				alert(e)
+				
 		return false
 
 	$("#searchbox").keydown (e) ->
@@ -100,12 +119,12 @@ $ ->
 			deleteOverlays()
 			url = '?term=' + $(this).val()
 			window.history.pushState path: url, '', url
-			loadServices url
+			loadServices url, false
 			return true
 			
 	$(window).bind 'popstate', (e) ->
 		state = e.originalEvent.state
 		if state
-			loadServices state.path
+			loadServices state.path, true
 
 	return true

@@ -32,6 +32,13 @@ class HomeController < ApplicationController
  end
 
  def contact
+   
+ end
+ 
+ def more
+   respond_to do |format|
+     format.html { render :layout => nil }
+   end
  end
 
  def show

@@ -17,6 +17,13 @@ body {
 	margin:0;
 }
 
+h1 {
+	font-size:1.5em;
+	padding:0;
+	margin:0;
+}
+h2 { font-size:1em}
+
 /* Canvas */
 #map_canvas {
 	margin-left:250px;
