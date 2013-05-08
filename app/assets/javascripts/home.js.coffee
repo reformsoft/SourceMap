@@ -45,7 +45,7 @@ addMarkers = (e) ->
 
 loadServices = (url, isBack) -> 
 	# don't push anything or do anything for that matter!
-	if priorPushUrl == url && !isBack
+	if url != '' && priorPushUrl == url && !isBack
 		return
 		
 	priorPushUrl = url
@@ -85,13 +85,13 @@ $ ->
 	google.maps.event.addListener map, 'click', ->
 		infoWindow.close()
 		
-	loadServices $(this).attr('href'), false
+	loadServices '', false
 
 	$(".category, .goto").click ->
 		loadServices $(this).attr('href'), false
 		return false
 		
-	#$("#more_overlay").dialog
+	#$("#more_overlay").dialogl
 #		autoOpen: false
 #		show:
 #			effect: "blind"
