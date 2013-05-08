@@ -77,6 +77,13 @@ $ ->
 		center: new google.maps.LatLng(49.457637, -2.580414)
 		zoom: 12
 		mapTypeId: google.maps.MapTypeId.ROADMAP
+		panControlOptions:
+			position: google.maps.ControlPosition.LEFT_CENTER
+		zoomControlOptions:
+			position: google.maps.ControlPosition.LEFT_CENTER
+		mapTypeControlOptions:
+			position: google.maps.ControlPosition.RIGHT_BOTTOM
+		streetViewControl: false
 
 	map = new google.maps.Map(document.getElementById("map_canvas"), myOptions)
 
