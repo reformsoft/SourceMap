@@ -23,7 +23,7 @@ class HomeController < ApplicationController
     advert_tags = Tag.where("name LIKE 'Advert' AND value LIKE ?", true)
     @adverts = tags_to_unique_service_array(advert_tags)
     #  Randomly select 4 adverts to show
-    @adverts = @adverts.sample(4)
+    @adverts = @adverts.sample(1)
 
     respond_to do |format|
      format.html { render :layout => 'google_maps'}

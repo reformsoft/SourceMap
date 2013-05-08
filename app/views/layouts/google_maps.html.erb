@@ -7,7 +7,7 @@
 	<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyADY5kcjJrAU5MM_rImge2LTWK4Nbfc5OA&sensor=false"></script>
 	<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 	<script src="http://code.jquery.com/ui/1.10.2/jquery-ui.js"></script>
-
+	<link href='http://fonts.googleapis.com/css?family=Noto+Sans' rel='stylesheet' type='text/css'>
 	<%= javascript_include_tag "jquery.blockUI" %>
 	
 	<%= javascript_include_tag "application" %>
@@ -15,10 +15,10 @@
 	
 	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 	<style type="text/css">
-	html { height: 100% }
-	body { height: 100%; margin: 0; padding: 0 }
-	#map_canvas { height: 100% }
-	#more_overlay { display:none; }
+		html { height: 100% }
+		body { height: 100%; margin: 0; padding: 0 }
+		#map_canvas { height: 100% }
+		#more_overlay { display:none; }
 	</style>
 </head>
 <body>
@@ -26,7 +26,7 @@
 	<div id="more_overlay"></div>
 
 	<div id="top">
-		<input name="searchbox" id="searchbox" type="search" placeholder="Search...">
+		<input name="searchbox" id="searchbox" columns="1000" type="search" placeholder="Search...">
 		<ul>
 			<li id="popular_views">Common Terms:</li>
 

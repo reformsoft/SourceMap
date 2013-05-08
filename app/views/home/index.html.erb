@@ -1,5 +1,4 @@
 <% if @adverts %>
-<h2>Friends</h2>
 <ul>
   <% @adverts.each do |s| %>
   <% name_tag = s.tags.detect { |t| t.name == "Name" } %>
@@ -14,4 +13,3 @@
   <% end %>
 </ul>
 <% end %>
-<%= link_to 'Contact', contact_path %>
