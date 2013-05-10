@@ -78,9 +78,9 @@ $ ->
 		zoom: 12
 		mapTypeId: google.maps.MapTypeId.ROADMAP
 		panControlOptions:
-			position: google.maps.ControlPosition.LEFT_CENTER
+			position: google.maps.ControlPosition.RIGHT_CENTER
 		zoomControlOptions:
-			position: google.maps.ControlPosition.LEFT_CENTER
+			position: google.maps.ControlPosition.RIGHT_CENTER
 		mapTypeControlOptions:
 			position: google.maps.ControlPosition.RIGHT_BOTTOM
 		streetViewControl: false

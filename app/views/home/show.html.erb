@@ -6,37 +6,30 @@
 <% website_tag = @service.tags.detect { |t| t.name == "Website" } %>
 <% email_tag = @service.tags.detect { |t| t.name == "Email" } %>
 
-<h1><%= name_tag.value %></h1>
-<% if website_tag %>
-	<p><%= link_to website_tag.value, website_tag.value %></p>
-<% end %>
+<h1 class="service_title"><%= name_tag.value %></h1>
 
-<% if description_tag %>
-<p><%= description_tag.value.html_safe %></p>
-<% end %>
+<span class="service_sub">Tel: <% if phone_tag %><%= phone_tag.value %><% else %>(none)<% end %> | E-mail: <% if email_tag %><%= mail_to email_tag.value, email_tag.value %><% else %>(none)<% end %></span>
 
-<% if email_tag %>
-<p><b><%= email_tag.name %>:</b>
-	<%= mail_to email_tag.value, email_tag.value %></p>
-<% end %>
+<table class="service_details">
+	<% if description_tag %>
+		<tr>
+			<th>Description:</th>
+			<td><%= description_tag.value.html_safe %></td>
+		</tr>
+	<% end %>
+	<% if address_tag %>
+		<tr>
+			<th>Address:</th>
+			<td><%= address_tag.value.html_safe %></td>
+		</tr>
+	<% end %>
+	<% @service.tags.each do |t| %>
+		<% if not ["Name", "Description", "Address", "Phone", "Website", "Email", "Advert", "Keywords"].include?(t.name) %>
+			<tr>
+				<th><%= t.name %>:</th>
+				<td><%= t.value %></td>
+			</tr>
+		<% end %>
+	<% end %>
+</table>
 
-<% if address_tag %>
-<p><b><%= address_tag.name %>:</b>
-	<%= address_tag.value %></p>
-<% end %>
-
-<% if phone_tag %>
-<p><b><%= phone_tag.name %>:</b>
-	<%= phone_tag.value %></p>
-<% end %>
-
-
-
-<% @service.tags.each do |t| %>
-<% if not ["Name", "Description", "Address", "Phone", "Website", "Email", "Advert", "Keywords"].include?(t.name) %>
-<p>
-	<b><%= t.name %>:</b>
-	<%= t.value %>
-</p>
-<% end %>
-<% end %>

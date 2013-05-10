@@ -69,14 +69,12 @@ body {
 
 h1 {
 	font-size:1.5em;
-	padding:0;
-	margin:0;
 }
 h2 { font-size:1em}
 
 /* Top */
 #top {
-	position:fixed;
+	position:absolute;
 	top:0;
 	left:0;
 	right:0;
@@ -100,7 +98,7 @@ h2 { font-size:1em}
 }
 
 #popular_views {
-	padding:15px 10px;
+	padding:17px 10px;
 	color:#888;
 }
 
@@ -173,4 +171,33 @@ h2 { font-size:1em}
 	font-size:17px;
 	margin-top:15px;
 	margin-left:15px;
+	float:left;
+}
+
+#map_overlay {
+	display:none;
+	width:400px;
+	max-width:200px;
+}
+
+.service_title {
+	margin-bottom:5px;
+	display:block;
+}
+
+.service_sub {
+	color:#888;
+	font-size:0.85em;
+}
+
+.service_details {
+	margin-top:10px;
+	font-size:0.85em;
+	max-width:500px;
+}
+
+.service_details th {
+	font-weight:bold;
+	padding:5px 10px 5px 0;
+	text-align:right;
 }
