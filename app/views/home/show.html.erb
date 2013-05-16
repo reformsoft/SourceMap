@@ -5,10 +5,12 @@
 <% phone_tag = @service.tags.detect { |t| t.name == "Phone" } %>
 <% website_tag = @service.tags.detect { |t| t.name == "Website" } %>
 <% email_tag = @service.tags.detect { |t| t.name == "Email" } %>
-
+<% twitter_tag = @service.tags.detect { |t| t.name == "Twitter" } %>
 <h1 class="service_title"><%= name_tag.value %></h1>
 
-<span class="service_sub">Tel: <% if phone_tag %><%= phone_tag.value %><% else %>(none)<% end %> | E-mail: <% if email_tag %><%= mail_to email_tag.value, email_tag.value %><% else %>(none)<% end %></span>
+<%= location_summary %>
+
+<span class="service_sub"><% if phone_tag %>Tel: <%= phone_tag.value %> | <% end %><% if email_tag %>E-mail: <%= mail_to email_tag.value, email_tag.value %> | <% end %><% if twitter_tag %> | Twitter: <%= twitter_tag.value %><% end %></span>
 
 <table class="service_details">
 	<% if description_tag %>

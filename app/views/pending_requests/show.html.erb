@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @pending_request.name %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @pending_request.address %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @pending_request.email %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @pending_request.phone %>
+</p>
+
+<p>
+  <b>Lat:</b>
+  <%= @pending_request.lat %>
+</p>
+
+<p>
+  <b>Lng:</b>
+  <%= @pending_request.lng %>
+</p>
+
+<p>
+  <b>Tags:</b>
+  <%= @pending_request.tags %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @pending_request.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_pending_request_path(@pending_request) %> |
+<%= link_to 'Back', pending_requests_path %>

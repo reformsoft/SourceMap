@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130117182437) do
+ActiveRecord::Schema.define(:version => 20130516115251) do
+
+  create_table "pending_requests", :force => true do |t|
+    t.string   "name"
+    t.string   "address"
+    t.string   "email"
+    t.string   "phone"
+    t.float    "lat"
+    t.float    "lng"
+    t.string   "tags"
+    t.string   "description"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+  end
 
   create_table "services", :force => true do |t|
     t.float    "lat"
